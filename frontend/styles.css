@@ -1,80 +1,102 @@
 body {
-  background: rgba(24, 20, 20, 0.987);
+  background: #171717;
   margin-left: 50px;
 }
 
-h1,
-label {
-  color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0.4em;
+  background-color: #171717;
+  border-radius: 25px;
+  transition: 0.4s ease-in-out;
+}
+
+h1 {
+  text-align: center;
+  margin: 2em;
+  color: rgb(255, 255, 255);
+  font-size: 1.2em;
 }
 
 .urlInput {
-  position: relative;
-  width: 400px;
-  margin: 8px 0;
-  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+#inputIcon {
+  height: 1.3rem;
+  width: 1.3rem;
 }
 
 #url {
-  width: 100%;
-  padding: 6px 0px;
-  box-sizing: border-box;
+  background: none;
   border: none;
-  border-bottom: 2px solid #ccc;
-  background: transparent;
-  color: white;
-}
-
-#url:focus {
   outline: none;
+  width: 100%;
+  color: #d3d3d3;
 }
 
-.urlInput label {
-  position: absolute;
-  top: 10px;
-  left: 0px;
-  transition: 0.5s;
-  color: white;
-  z-index: 1000;
-}
-
-.urlInput input:focus ~ label,
-.urlInput input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: teal;
+.details {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 2.5em;
 }
 
 #fileType {
-  width: 60px;
-  height: 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 16px;
+  padding: 0.5em;
+  padding-left: 1.1em;
+  padding-right: 1.1em;
+  border-radius: 5px;
+  margin-right: 0.5em;
+  border: none;
+  outline: none;
+  background-color: #252525;
+  color: white;
 }
 
-button {
-  background-color: teal;
-  color: white;
-  padding: 4px 20px;
-  margin: 8px 0;
+#choosePathButton {
+  padding: 0.5em;
+  padding-left: 2.3em;
+  padding-right: 2.3em;
+  border-radius: 5px;
   border: none;
-  border-radius: 16px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+  background-color: #252525;
+  color: white;
+}
+
+#choosePathButton:hover {
+  background-color: rgba(0, 120, 120, 0.3);
   cursor: pointer;
 }
 
-button:hover {
-  background-color: cadetblue;
-}
-
 #submit {
-  background-color: rgb(0, 132, 190);
-  height: 40px;
-  font-size: 16px;
+  margin-bottom: 3em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: 0.2s ease-in-out;
+  background-color: #252525;
+  color: white;
 }
 
 #submit:hover {
-  background-color: cadetblue;
+  background-color: red;
+  color: white;
 }
