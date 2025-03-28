@@ -19,21 +19,15 @@ async def download(data: UrlInput):
     fileType = data.fileType
     opts = {
         'outtmpl': path + "\\" + f'%(title)s.%(ext)s',
-        'format': 'best' if fileType in ['mp4', 'webm'] else 'bestaudio/best',
+        'format': 'bestvideo' if fileType == 'video' else 'bestaudio/best',
     }
     
-    if fileType in ['mp3', 'aac', 'flac', 'm4a', 'opus', 'vorbis', 'wav']:
+    if fileType == 'audio':
         opts['postprocessors'] = [{
             'key': 'FFmpegExtractAudio',
-            'preferredcodec': fileType,
-            'preferredquality': '320',
+            'preferredquality': '320'
         }]
     
-    elif fileType in ['mp4', 'webm']:
-        opts['postprocessors'] = [{
-            'key': 'FFmpegVideoConvertor',
-            'preferedformat': fileType,
-        }]
         
     download_video(url, opts)
     print(f"Downloading: {url} to {path} as {fileType}")

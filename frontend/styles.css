@@ -1,0 +1,80 @@
+body {
+  background: rgba(24, 20, 20, 0.987);
+  margin-left: 50px;
+}
+
+h1,
+label {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.urlInput {
+  position: relative;
+  width: 400px;
+  margin: 8px 0;
+  margin-top: 50px;
+}
+
+#url {
+  width: 100%;
+  padding: 6px 0px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  color: white;
+}
+
+#url:focus {
+  outline: none;
+}
+
+.urlInput label {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  transition: 0.5s;
+  color: white;
+  z-index: 1000;
+}
+
+.urlInput input:focus ~ label,
+.urlInput input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: teal;
+}
+
+#fileType {
+  width: 60px;
+  height: 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+}
+
+button {
+  background-color: teal;
+  color: white;
+  padding: 4px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: cadetblue;
+}
+
+#submit {
+  background-color: rgb(0, 132, 190);
+  height: 40px;
+  font-size: 16px;
+}
+
+#submit:hover {
+  background-color: cadetblue;
+}

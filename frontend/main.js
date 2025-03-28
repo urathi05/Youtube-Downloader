@@ -11,6 +11,9 @@ function createWindow() {
             nodeIntegration: true,
             contextIsolation: false,
         },
+        autoHideMenuBar: true,
+        //transparent: true,
+        //frame: false,
     });
 
     mainWindow.loadFile('index.html');
@@ -22,6 +25,16 @@ function createWindow() {
         });
 
         return result.filePaths[0]; // Return the selected path (if any)
+    });
+
+    // Close the window
+    ipcMain.on('window:close', () => {
+        mainWindow.close();
+    });
+
+    // Minimize the window
+    ipcMain.on('window:minimize', () => {
+        mainWindow.minimize();
     });
 }
 

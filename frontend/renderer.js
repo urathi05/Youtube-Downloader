@@ -1,10 +1,12 @@
 // renderer.js
 const { ipcRenderer } = require('electron');
 
+console.log("Renderer process started");
+
 
 document.getElementById('submit').addEventListener('click', async () => {
     const urlInput = document.getElementById('url').value;
-    const pathInput = document.getElementById('path').textContent.replace('Download Path: ', '');  // Get the path without the label
+    const pathInput = document.getElementById('choosePathButton').textContent.replace('Download Path: ', '');  // Get the path without the label
     const typeInput = document.getElementById('fileType').value;
 
     if (urlInput.trim() === '' || pathInput.trim() === '' || typeInput.trim() === '') {
@@ -23,13 +25,25 @@ document.getElementById('submit').addEventListener('click', async () => {
 
     const data = await response.json();
     console.log("Message: " + data.message);
-    document.getElementById('response').innerText = data.message;  // Display response in <p>
+    //document.getElementById('response').innerText = data.message;  // Display response in <p>
 });
 
-document.getElementById('choosePathButton').addEventListener('click', async () => {
+const pathButton = document.getElementById('choosePathButton');
+
+pathButton.addEventListener('click', async () => {
     const selectedPath = await ipcRenderer.invoke('dialog:openDirectory');
     
     if (selectedPath) {
-        document.getElementById('path').innerHTML = "Download Path: " + selectedPath; // Populate the path input with the selected folder
+        pathButton.innerHTML = selectedPath; // Populate the path input with the selected folder
     }
+});
+
+document.getElementById('close-btn').addEventListener('click', () => {
+    console.log("Close button clicked");
+    ipcRenderer.send('window:close');  // Close the window
+});
+
+document.getElementById('min-btn').addEventListener('click', () => {
+    console.log("Minimize button clicked");
+    ipcRenderer.send('window:minimize');  // Minimize the window
 });
