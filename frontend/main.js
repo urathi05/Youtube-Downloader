@@ -12,8 +12,8 @@ function createWindow() {
             contextIsolation: false,
         },
         autoHideMenuBar: true,
-        //transparent: true,
-        //frame: false,
+        transparent: true,
+        frame: false,
     });
 
     mainWindow.loadFile('index.html');
