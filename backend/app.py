@@ -19,7 +19,7 @@ async def download(data: UrlInput):
     fileType = data.fileType
     opts = {
         'outtmpl': path + "\\" + f'%(title)s.%(ext)s',
-        'format': 'bestvideo' if fileType == 'video' else 'bestaudio/best',
+        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' if fileType == 'video' else 'bestaudio/best',
     }
     
     if fileType == 'audio':

@@ -42,8 +42,3 @@ document.getElementById('close-btn').addEventListener('click', () => {
     console.log("Close button clicked");
     ipcRenderer.send('window:close');  // Close the window
 });
-
-document.getElementById('min-btn').addEventListener('click', () => {
-    console.log("Minimize button clicked");
-    ipcRenderer.send('window:minimize');  // Minimize the window
-});
