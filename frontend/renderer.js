@@ -15,7 +15,7 @@ document.getElementById('submit').addEventListener('click', async () => {
     }
 
     // Send a POST request to FastAPI
-    const response = await fetch('http://127.0.0.1:8000/download', {
+    const response = await fetch('http://127.0.0.1:7001/download', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

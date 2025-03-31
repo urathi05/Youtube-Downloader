@@ -1,7 +1,9 @@
 const { app, BrowserWindow, dialog, ipcMain } = require('electron');
 const path = require('path');
+const { spawn } = require('child_process');
 
 let mainWindow;
+let videoAPI;
 
 function createWindow() {
     mainWindow = new BrowserWindow({
@@ -38,7 +40,22 @@ function createWindow() {
     });
 }
 
-app.whenReady().then(createWindow);
+function startAPI() {
+    const apiPath = path.join(__dirname, '..', 'videoAPI.exe'); 
+    const videoAPI = spawn(apiPath, [], { detached: true, stdio: 'ignore'});
+    videoAPI.unref(); 
+}
+
+app.whenReady().then(() => {
+    startAPI(); // Start the FastAPI server
+    createWindow();
+});
+
+app.on('before-quit', () => {
+    if (videoAPI) {
+        videoAPI.kill(); // Kill the FastAPI server when the app is closed
+    }
+})
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
